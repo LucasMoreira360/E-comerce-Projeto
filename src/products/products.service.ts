@@ -35,7 +35,14 @@ export class ProductsService {
     });
   }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} product`;
-  // }
+  findOne(id: number) {
+    return this.prisma.product.findFirst({
+      where: {
+        id: id,
+      },
+      include: {
+        category: true,
+      },
+    });
+  }
 }
